@@ -32,7 +32,6 @@ class Hangman
   # return true if word has letter
   def word_has?(letter)
   	@word.include? letter
-  	@guesses << letter if !@guesses.include? letter
   end
 
   # replace indexes of @board with letter where the same indexes of @word are letter
@@ -45,6 +44,7 @@ class Hangman
   		@board[index] = letter if @word[index] == letter
   	end
 
+    @guesses << letter if !@guesses.include? letter
 
   end
 
