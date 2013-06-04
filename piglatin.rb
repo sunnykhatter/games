@@ -16,11 +16,13 @@ unless output != ""
 
 
 end
+    
+    if eword !=""
 
-teststring = eword.slice!(0..target) + "ay"
+teststring = eword.slice!(0..target) + "ay" 
 
 puts eword.slice(target..eword.length) + teststring
-
+end
 end
 
 
