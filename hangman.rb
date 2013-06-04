@@ -69,16 +69,16 @@ class Hangman
 
   # return true if @board doesn't have a '_', otherwise return false
   def win?
-   unless @board.include? "_"
-   true 
-end
+    unless @board.include? "_"
+      true 
+    end
   end
 
   # return true if @chances is 0, otherwise return false
   def lost?
-      if @chances == 0
-      	true
-      end
+    if @chances == 0
+    	true
+    end
   end
 
 
