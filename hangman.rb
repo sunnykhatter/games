@@ -32,6 +32,7 @@ class Hangman
   # return true if word has letter
   def word_has?(letter)
   	@word.include? letter
+  	@guesses << letter if !@guesses.include? letter
   end
 
   # replace indexes of @board with letter where the same indexes of @word are letter
@@ -49,8 +50,12 @@ class Hangman
 
   # decrement # of chances and add letter to guesses
   def wrong_letter(letter)
-  	@chances = @chances -1
-  	@guesses << letter
+  	@chances = @chances - 1
+  	@guesses << letter 
+  end
+
+  def same_letter(letter)
+  	true if @guesses.include? letter
   end
   
   # if the word has the given letter, put it on the board, otherwise, it's a wrong guess
@@ -60,7 +65,6 @@ class Hangman
     else
       wrong_letter(letter) if !@guesses.include? letter
     end
-
   end
 
   # return true if @board doesn't have a '_', otherwise return false

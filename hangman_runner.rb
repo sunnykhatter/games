@@ -6,12 +6,22 @@ class HangmanRunner
   # Starts the hangman game
   def self.run 
     @game = Hangman.new()
+    @last_letter_same = false
     while true
     	puts "\nBoard: #{@game.board}\n\n"
 	    puts "Guessed letters: #{@game.guesses}\n\n"
 	    puts "Chances: #{@game.chances}\n\n" 
+	    puts "Already guessed" if @last_letter_same == true
 	    print "Take your best shot! Enter guess: "
 	    letter = gets.chomp
+	   
+	    if @game.same_letter(letter)
+	    	 @last_letter_same = true 
+	    else
+	    	 @last_letter_same = false
+	    end
+
+
 	    @game.guess(letter)
 	    if @game.win?
 	    	puts "\n\nCongratulations! You won!\n"
