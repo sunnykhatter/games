@@ -1,5 +1,5 @@
 class Tictactoe
-attr_accessor :board, :turn, :player
+attr_accessor :board, :turn, :player, :spots
 
 
 	def initialize()
@@ -19,8 +19,8 @@ attr_accessor :board, :turn, :player
 	end	
 
 	def replacespot(number)
-		@board[number.to_s] = player
-		@spots[number-1] = player
+		@board[number.to_s] = @player
+		@spots[number-1] = @player
 		@turn += 1
 		
 	end
@@ -44,9 +44,9 @@ attr_accessor :board, :turn, :player
 		inner = 0
 		while outer <= @wincase.size do
 			line = 0
-			while inner <= 3 do
+			while inner < 3 do
 				
-				line += 1 if @spots[outer][inner] == @player
+				line += 1 if @spots[@wincase[outer][inner]] == @player
 				inner += 1
 			end
 			return true if line >= 3

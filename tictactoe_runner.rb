@@ -21,7 +21,7 @@ class TictactoeRunner
 			end
 
 			@game.place(number)
-
+			puts @game.spots
 			if @game.win?
 				puts "\n\nPlayer #{@game.player} is the winner!\n"
 				break
