@@ -1,3 +1,3 @@
 Class Hangman
 
-words = ["rabbit", "dog" , "cat"]
+words = ["rabbit", "dog" , "cat", "kangaroo"]
