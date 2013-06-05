@@ -1,5 +1,5 @@
 class Tictactoe
-attr_accessor :board, :turn, :player
+attr_accessor :board, :turn, :player, :taken
 	WINCASE = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
 
 	def initialize()
@@ -7,26 +7,33 @@ attr_accessor :board, :turn, :player
 	@spots = "123456789"
 	@turn = 0
 	@player = "X"
+	@taken = false
 	end
 
 	def drawboard()
 		board  =  "1 | 2 | 3\n_________\n4 | 5 | 6\n_________\n7 | 8 | 9"
 	end
 
-	def alreadytaken(number)
-		!@spots.include? number.to_s
+	def set_taken()
+		@taken = true
 	end	
+
+	def reset_taken()
+		@taken = false
+	end
 
 	def replacespot(number)
 		@board[number.to_s] = @player
 		@spots[number.to_s] = @player
 		@turn += 1
-		
 	end
 
 	def place(number)
+		reset_taken()
 		if @spots.include? number.to_s 
 			replacespot(number)
+		else 
+			set_taken()
 		end
 	end
 
@@ -46,7 +53,7 @@ attr_accessor :board, :turn, :player
 			end
 			return true if towin >= 3
 		end
-		whosturn(@turn)
+		
 	end
 
 	def win?
@@ -54,6 +61,7 @@ attr_accessor :board, :turn, :player
 	end
 
 	def tie?
+		whosturn(@turn)
 		return true if turn >= 9
 	end
 end
