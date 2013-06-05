@@ -8,7 +8,7 @@ class TictactoeRunner
 		 
 	 	while true
 			puts @game.board
-			puts "Spot not available" if @game.taken == true
+			puts "Spot not available\n\n" if @game.taken == true
 			puts "It is the #{@game.player} players turn."
 			puts "Enter a number to take that spot"
 			number = gets.chomp

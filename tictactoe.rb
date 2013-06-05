@@ -11,7 +11,7 @@ attr_accessor :board, :turn, :player, :taken
 	end
 
 	def drawboard()
-		board  =  "1 | 2 | 3\n_________\n4 | 5 | 6\n_________\n7 | 8 | 9"
+		board  =  "1 | 2 | 3\n_________\n4 | 5 | 6\n_________\n7 | 8 | 9\n\n"
 	end
 
 	def set_taken()
