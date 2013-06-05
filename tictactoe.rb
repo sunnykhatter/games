@@ -38,31 +38,19 @@ attr_accessor :board, :turn, :player
 		end
 	end
 
-	def checkwinner(player)
-		outer = 0
-		# inner = 0
+	def checkwinner()
 		WINCASE.each do |outer|
 			towin = 0
 			outer.each do |winnum|
-				towin += 1 if @spots[winnum-1] == player
+				towin += 1 if @spots[winnum-1] == @player
 			end
 			return true if towin >= 3
 		end
-		# while outer <= 8 do
-		# 	3towin = 0
-		# 	while inner <= 3 do
-				
-		# 		3towin += 1 if @spots[@wincase[outer][inner]-1] == @player
-		# 		inner += 1
-		# 	end
-		# 	return true if 3towin >= 3
-		# 	outer += 1
-		# end
 		whosturn(@turn)
 	end
 
 	def win?
-		true if checkwinner(@player) == true
+		true if checkwinner() == true
 	end
 
 	def tie?
