@@ -1,12 +1,11 @@
 class Tictactoe
-attr_accessor :board, :turn, :player, :spots
-
+attr_accessor :board, :turn, :player
+	WINCASE = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
 
 	def initialize()
 	@board = drawboard()
 	@spots = "123456789"
 	@turn = 0
-	@wincase = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
 	@player = "X"
 	end
 
@@ -42,7 +41,7 @@ attr_accessor :board, :turn, :player, :spots
 	def checkwinner(player)
 		outer = 0
 		# inner = 0
-		@wincase.each do |outer|
+		WINCASE.each do |outer|
 			towin = 0
 			outer.each do |winnum|
 				towin += 1 if @spots[winnum-1] == player

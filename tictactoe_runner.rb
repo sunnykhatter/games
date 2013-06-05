@@ -8,6 +8,7 @@ class TictactoeRunner
 		@no_spot = false
 		 
 	 	while true
+	 		puts "**********************"
 			puts @game.board
 			puts "Spot not available" if @no_spot == true
 			puts "It is the #{@game.player} players turn."
