@@ -1,6 +1,9 @@
 class Hangman
 	LIST = ["canada", "england", "australia", "japan"]
-  attr_accessor :word, :chances, :board, :list, :guesses, :answer, :sboard
+  attr_accessor :word, :chances, :board, :list, :guesses, :answer, :sboard, :same
+
+  class InvalidGuessException < Exception
+  end
 
   def initialize()
     @chances = 8
@@ -8,6 +11,7 @@ class Hangman
     @word    = LIST.sample
     @board   = draw_board(@word)
     @sboard = spaced_board(@board)
+    @same = false
   end
   
   # return @guesses as a string
@@ -56,16 +60,29 @@ class Hangman
   end
 
   #check if the letter has already been used 
-  def same_letter(letter)
-  	true if @guesses.include? letter
+  def set_same()
+  	@same = true
+  end
+
+  def default_same()
+    @same = false
+  end
+
+  def valid_guess(letter)
+    letter.length == 1 && letter[/[a-zA-Z0-9]+/] == letter
   end
   
   # if the word has the given letter, put it on the board, otherwise, it's a wrong guess
   def guess(letter)
-    if word_has?(letter)
+    default_same()
+    if !valid_guess(letter)
+      raise InvalidGuessException.new("Invalid Guess!") 
+    elsif @guesses.include? letter
+      set_same()
+    elsif word_has?(letter)
     	put_letter_on_board(letter)
     else
-      wrong_letter(letter) if !@guesses.include? letter
+      wrong_letter(letter)
     end
   end
 
