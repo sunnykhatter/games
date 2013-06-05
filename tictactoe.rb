@@ -23,14 +23,14 @@ attr_accessor :board, :turn, :player, :taken
 	end
 
 	def replacespot(number)
-		@board[number.to_s] = @player
-		@spots[number.to_s] = @player
+		@board[number] = @player
+		@spots[number] = @player
 		@turn += 1
 	end
 
 	def place(number)
 		reset_taken()
-		if @spots.include? number.to_s 
+		if @spots.include? number
 			replacespot(number)
 		else 
 			set_taken()

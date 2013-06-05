@@ -11,7 +11,7 @@ class TictactoeRunner
 			puts "Spot not available" if @game.taken == true
 			puts "It is the #{@game.player} players turn."
 			puts "Enter a number to take that spot"
-			number = gets.chomp.to_i
+			number = gets.chomp
 	 		puts "**********************\n\n"
 
 			@game.place(number)
