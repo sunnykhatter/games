@@ -1,32 +1,33 @@
 class Hangman
 	LIST = ["canada", "england", "australia", "japan"]
-  attr_accessor :word, :chances, :board, :list, :guesses, :answer
+  attr_accessor :word, :chances, :board, :list, :guesses, :answer, :sboard
 
   def initialize()
     @chances = 8
     @guesses = []
     @word    = LIST.sample
     @board   = draw_board(@word)
+    @sboard = spaced_board(@board)
   end
   
   # return @guesses as a string
   def guesses
   	@guesses.to_s
-
-
   end
   
   # return a string of underscores equal to length of the given word
   def draw_board(word)
     count = 0
     string = ""
-    while count <word.length
+    while count < word.length
     	count+=1
     	string += "_"
+    end
+    return string
+  end
 
-	end
-	return string
-
+  def spaced_board(board)
+    @sboard = board.scan(/.{1}/).join(' ')
   end
 
   # return true if word has letter
@@ -45,7 +46,7 @@ class Hangman
   	end
 
     @guesses << letter if !@guesses.include? letter
-
+    spaced_board(@board)
   end
 
   # decrement # of chances and add letter to guesses
@@ -54,6 +55,7 @@ class Hangman
   	@guesses << letter 
   end
 
+  #check if the letter has already been used 
   def same_letter(letter)
   	true if @guesses.include? letter
   end

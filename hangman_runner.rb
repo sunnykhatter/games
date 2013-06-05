@@ -8,7 +8,7 @@ class HangmanRunner
     @game = Hangman.new()
     @last_letter_same = false
     while true
-    	puts "\nBoard: #{@game.board}\n\n"
+    	puts "\nBoard:"" #{@game.sboard}\n\n"
 	    puts "Guessed letters: #{@game.guesses}\n\n"
 	    puts "Chances: #{@game.chances}\n\n" 
 	    puts "Already guessed" if @last_letter_same == true
@@ -24,7 +24,7 @@ class HangmanRunner
 
 	    @game.guess(letter)
 	    if @game.win?
-	    	puts "\n\nCongratulations! You won!\n"
+	    	puts "\n\nCongratulations! You won! The word was #{@game.word}\n"
 	    	break
 	    elsif @game.lost?
 	    	puts "\n\nYou lost. The word was #{@game.word}\n"	
